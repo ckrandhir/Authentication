@@ -2,7 +2,7 @@
  * @Author: Chandan Kumar 
  * @Date: 2018-03-08 16:12:38 
  * @Last Modified by: ckumar2@hallmark.com
- * @Last Modified time: 2018-03-09 11:39:34
+ * @Last Modified time: 2018-03-22 10:27:07
  * 
  * 
  */
@@ -29,23 +29,24 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, client) => {
 
     const db = client.db('TodoApp');
 
+    console.log('hi');
 
 
-    // db.collection('Todos').insertOne({
-    //     text: 'I am Randhir kumar',
-    //     complete: true
+    db.collection('todos').insertOne({
+        text: 'I am Randhir kumar',
+        complete: true
 
-    // }, (err, result) => {
+    }, (err, result) => {
 
-    //     if (err) {
+        if (err) {
 
-    //         console.log('Unable to insert');
+            console.log('Unable to insert');
 
-    //     }
+        }
 
-    //     console.log(JSON.stringify(result.ops, undefined, 2));
+        console.log(JSON.stringify(result.ops, undefined, 2));
 
-    // });
+    });
 
 
     //********************insert user Document in User collection****************************************** */
