@@ -2,7 +2,7 @@
  * @Author: Chandan Kumar 
  * @Date: 2018-03-21 11:07:43 
  * @Last Modified by: ckumar2@hallmark.com
- * @Last Modified time: 2018-03-23 11:24:52
+ * @Last Modified time: 2018-03-28 11:37:05
  */
 var { mongoose } = require('./db/mongoose');
 
@@ -42,6 +42,7 @@ app.post('/todos', (req, res) => {
     }, (e) => {
 
         res.status(400).send(e);
+
     })
 
 
@@ -205,11 +206,38 @@ app.patch('/todos/:id', (req, res) => {
 
 
 
+
+
+//****************************** */Authentication****************************
+
+app.post('/user', (req, res) => {
+
+    console.log('hi');
+    var body = _.pick(req.body, ['email', 'password']);
+
+    var user = new User(body);
+
+
+    console.log(body);
+
+    user.save().then((doc) => {
+
+        res.send(doc);
+    }).catch((e) => {
+
+        res.status(404).send(e);
+    })
+
+});
+
+
 app.listen(3000, () => {
 
     console.log('Server start at 3000');
 
 });
+
+//****************************** */Authentication****************************
 
 
 //Inserting document in collection using Mongoose
